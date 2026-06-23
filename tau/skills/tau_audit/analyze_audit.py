@@ -16,7 +16,7 @@ from collections import Counter, defaultdict
 from datetime import datetime
 
 def parse_timestamp(line):
-    """Extract timestamp from audit line like [2026-06-23T17:49:05+00:00]"""
+    """Extract timestamp from audit line like [2026-06-23T17:49:15+00:00]"""
     m = re.match(r'\[(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+)', line)
     if m:
         try:
