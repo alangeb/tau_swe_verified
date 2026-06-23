@@ -12,6 +12,8 @@ This repository contains the complete SWE-bench Verified benchmark run using **T
 
 ## Results Summary
 
+### Internal Eval (per-instance, during pipeline run)
+
 | Metric | Value |
 |---|---|
 | Total instances | 500 |
@@ -20,14 +22,40 @@ This repository contains the complete SWE-bench Verified benchmark run using **T
 | Patch created (no eval) | 5 |
 | Patch failed | 2 |
 
-### By Repository
+### Official SWE-bench Eval (harness-based, post-hoc)
 
-| Repo | Total | Resolved | Rate |
+Run through the official `swebench.harness.run_evaluation` to verify internal results. Not submitted to the leaderboard (non-academic), but evaluated with the exact same harness used for official submissions.
+
+| Metric | Value |
+|---|---|
+| Total instances | 500 |
+| Skipped (empty patches) | 2 |
+| Evaluated | 498 |
+| **Resolved** | **331** |
+| Failed (tests) | 162 |
+| Patch apply failures | 5 |
+| **Official score** | **331/498 = 66.5%** |
+
+> The 5 patch-apply failures are instances where our generated patches were malformed and couldn't be applied by the harness. The harness doesn't write `report.json` for these — they are effectively unresolved. Excluding them: 331/493 = 67.1%.
+
+**Cross-validation:** Internal eval (66.6%) vs official eval (66.5%) — nearly identical, confirming our internal evaluation is accurate and not inflated.
+
+### By Repository (Official Eval)
+
+| Repo | Resolved | Total | Rate |
 |---|---|---|---|
-| scikit-learn | 32 | 27 | 84.4% |
-| pydata | 22 | 17 | 77.3% |
-| pytest-dev | 19 | 14 | 73.7% |
-| django | 231 | 159 | 68.8% |
+| scikit-learn | 27 | 32 | 84.4% |
+| pydata | 17 | 22 | 77.3% |
+| pytest-dev | 14 | 18 | 77.8% |
+| django | 158 | 226 | 69.9% |
+| sympy | 48 | 74 | 64.9% |
+| sphinx-doc | 28 | 44 | 63.6% |
+| matplotlib | 20 | 34 | 58.8% |
+| astropy | 11 | 22 | 50.0% |
+| mwaskom | 1 | 2 | 50.0% |
+| psf | 3 | 8 | 37.5% |
+| pylint-dev | 3 | 10 | 30.0% |
+| pallets | 1 | 1 | 100.0% |
 | sympy | 75 | 49 | 65.3% |
 | sphinx-doc | 44 | 28 | 63.6% |
 | matplotlib | 34 | 20 | 58.8% |
