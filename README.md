@@ -1,4 +1,4 @@
-# SWE-bench Verified — Tau Agent Benchmark
+# SWE-bench Verified — TauErgon Benchmark
 
 [📄 License](LICENSE) · [📋 Disclaimer](DISCLAIMER.md) · [🔒 Security](SECURITY.md)
 
@@ -8,7 +8,7 @@ This benchmark is **work in progress**. I am not affiliated with academia and ca
 
 ## Overview
 
-This repository contains the complete SWE-bench Verified benchmark run using **Tau Agent** as the fix engine. All 500 instances were processed through a Docker-based pipeline: Tau Agent runs inside isolated containers to generate patches, which are then evaluated against the official SWE-bench test suite.
+This repository contains the complete SWE-bench Verified benchmark run using **TauErgon** as the fix engine. All 500 instances were processed through a Docker-based pipeline: TauErgon runs inside isolated containers to generate patches, which are then evaluated against the official SWE-bench test suite.
 
 ## Results Summary
 
@@ -88,14 +88,14 @@ Key parameters: `--max-model-len 200000`, `--gpu-memory-utilization 0.95`, `--ma
 ```
 swe_adapter.py  -- Main orchestrator (CLI entry point)
   ├── swe_combined.py  -- Combined fix + eval workflow
-  │   ├── swe_fix.py     -- Prompt building, container setup, Tau execution
+  │   ├── swe_fix.py     -- Prompt building, container setup, TauErgon execution
   │   └── swe_docker.py  -- Docker container lifecycle
   └── swe_eval.py  -- Official evaluation, predictions generation
 ```
 
 ### Pipeline
 
-1. **Fix Phase** — Tau Agent runs inside a Docker container with a 5-phase prompt (LOCALIZE → ROOT CAUSE → PLAN → IMPLEMENT → REVIEW). It edits source files; the framework generates the patch.
+1. **Fix Phase** — TauErgon runs inside a Docker container with a 5-phase prompt (LOCALIZE → ROOT CAUSE → PLAN → IMPLEMENT → REVIEW). It edits source files; the framework generates the patch.
 2. **Eval Phase** — Patch is applied in a fresh container and tests are run via the official SWE-bench harness.
 3. **Results** — `results.jsonl` captures all outcomes. `artifacts/` stores per-instance patches, logs, and metadata.
 
@@ -203,7 +203,7 @@ python swe_adapter.py --gold-validation --eval-workers 4
 | `status.py` | Status reporter |
 | `run.sh` | Convenience wrapper |
 | `evolve.sh` | Autonomous improvement loop |
-| `tau/` | Tau Agent source (reproduction) |
+| `tau/` | TauErgon source (reproduction) |
 | `artifacts/` | Per-instance patches, logs, metadata |
 | `docker_vllm_qwen36_27b_nvfp4_mtp-froggeric_v0.22.1/` | Model serving config (docker-compose) |
 | `requirements.txt` | Python dependencies |

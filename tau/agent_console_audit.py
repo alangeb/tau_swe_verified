@@ -188,7 +188,7 @@ _COLOR_MAP: dict[str, str] = {
 
 def _abbreviated_timestamp(ts: str) -> str:
     """Extract HH:MM:SS from ISO timestamp."""
-    # ts = "2026-06-23T17:10:40+00:00"
+    # ts = "2026-06-23T17:18:19+00:00"
     parts = ts.split("T")
     if len(parts) == 2:
         time_part = parts[1].split(".")[0]
