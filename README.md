@@ -1,5 +1,11 @@
 # SWE-bench Verified — Tau Agent Benchmark
 
+[📄 License](LICENSE) · [📋 Disclaimer](DISCLAIMER.md) · [🔒 Security](SECURITY.md)
+
+## ⚠️ Work in Progress
+
+This benchmark is **work in progress**. I am not affiliated with academia and cannot submit to the official SWE-bench leaderboard. This run is not a perfect 1→500 straight pass — there were iterative tweaks, prompt improvements, and framework fixes along the way. The goal is to make the pipeline as "clean" and reproducible as possible, documenting everything transparently.
+
 ## Overview
 
 This repository contains the complete SWE-bench Verified benchmark run using **Tau Agent** as the fix engine. All 500 instances were processed through a Docker-based pipeline: Tau Agent runs inside isolated containers to generate patches, which are then evaluated against the official SWE-bench test suite.
@@ -64,9 +70,15 @@ python3 status.py by_repo  # Grouped by repository
 
 ### Docker Compose
 
-The exact model serving configuration lives at:
+The exact model serving configuration is included in this repo:
 ```
-../models/docker/docker_vllm_qwen36_27b_nvfp4_mtp-froggeric_v0.22.1/docker-compose.yaml
+docker_vllm_qwen36_27b_nvfp4_mtp-froggeric_v0.22.1/docker-compose.yaml
+```
+
+Start the model server:
+```bash
+cd docker_vllm_qwen36_27b_nvfp4_mtp-froggeric_v0.22.1
+docker compose up -d
 ```
 
 Key parameters: `--max-model-len 200000`, `--gpu-memory-utilization 0.95`, `--max-num-seqs 2`, `--kv-cache-dtype fp8`, `--calculate-kv-scales`, speculative config `{"method":"qwen3_5_mtp","num_speculative_tokens":3}`.
@@ -115,14 +127,15 @@ The fix prompt in `swe_fix.py` uses a single-shot 5-phase workflow with `/delega
 git clone <this-repo>
 cd swe
 
-# Start the model server (from sibling directory)
-cd ../models/docker/docker_vllm_qwen36_27b_nvfp4_mtp-froggeric_v0.22.1
+# Start the model server
+cd docker_vllm_qwen36_27b_nvfp4_mtp-froggeric_v0.22.1
 docker compose up -d
+cd ..
 
 # Install dependencies
 python3 -m venv venv
 source venv/bin/activate
-pip install datasets swebench
+pip install -r requirements.txt
 ```
 
 ### Running
@@ -192,6 +205,8 @@ python swe_adapter.py --gold-validation --eval-workers 4
 | `evolve.sh` | Autonomous improvement loop |
 | `tau/` | Tau Agent source (reproduction) |
 | `artifacts/` | Per-instance patches, logs, metadata |
+| `docker_vllm_qwen36_27b_nvfp4_mtp-froggeric_v0.22.1/` | Model serving config (docker-compose) |
+| `requirements.txt` | Python dependencies |
 | `results.jsonl` | All 500 results |
 
 ## Notes

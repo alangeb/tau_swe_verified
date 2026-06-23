@@ -1,0 +1,11 @@
+# SWE-bench Verified Adapter — Python dependencies
+# Install: pip install -r requirements.txt
+
+# Dataset loading
+datasets
+
+# Docker container management
+docker
+
+# SWE-bench evaluation harness (installed separately from cloned repo)
+# After cloning SWE-bench: pip install -e SWE-bench/swebench
