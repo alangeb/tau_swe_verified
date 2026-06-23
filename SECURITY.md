@@ -6,8 +6,9 @@ This is experimental software. No versions are guaranteed secure.
 
 ## Reporting Vulnerabilities
 
-If you discover a security vulnerability, please report it via a GitHub issue
-or by contacting the repository maintainers.
+If you discover a security vulnerability, please report it to:
+
+[YOUR EMAIL HERE]
 
 Do NOT publicly disclose vulnerabilities without coordination.
 

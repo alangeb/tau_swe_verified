@@ -18,12 +18,6 @@ venv/
 # SWE-bench eval repo (auto-cloned by swe_eval.py)
 SWE-bench/
 
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
 # OS
 .DS_Store
 Thumbs.db
