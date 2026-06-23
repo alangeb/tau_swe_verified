@@ -1,0 +1,11 @@
+# Ruff configuration for TauBot project
+
+[lint]
+# E402: Module level import not at top of file
+# Ignored in tools/ because tools follow a deliberate pattern where
+# docstrings come before imports (tools are loaded dynamically)
+ignore = ["E402"]
+
+[lint.per-file-ignores]
+# Tests may have unused imports for fixtures
+"tests/**" = ["F401"]

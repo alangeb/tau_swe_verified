@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "confidence_threshold": 0.6,
+  "levenshtein_threshold": 2,
+  "suffix_patterns": ["_command", "_tool", "_call", "_exec", "_run", "_action", "_query", "_search", "_read", "_write", "_edit", "_create", "_delete", "_update", "_list", "_find", "_get", "_set", "_check", "_validate", "_analyze", "_scan", "_build", "_test", "_deploy", "_install", "_remove"],
+  "prefix_patterns": ["cmd_", "tool_", "exec_", "run_", "do_", "use_", "call_", "invoke_", "perform_", "execute_"],
+  "command_keywords": ["git", "rm", "mv", "cp", "chmod", "mkdir", "ls", "cat", "find", "grep", "pip", "apt", "npm", "install", "clone", "commit", "push", "pull", "checkout", "merge", "cd", "pwd", "echo", "printf", "head", "tail", "wc", "sort", "uniq", "awk", "sed", "diff", "patch", "tar", "zip", "unzip", "curl", "wget", "ssh", "scp", "rsync", "docker", "kubectl", "make", "cmake", "gcc", "clang", "python", "node", "java", "go", "rust", "cargo", "mvn", "gradle", "bundle", "yarn", "pnpm", "bun"],
+  "whitelist_tags": ["code", "pre", "div", "span", "table", "ul", "ol", "li", "p", "br", "hr", "img", "a", "b", "i", "em", "strong", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "cite", "abbr", "kbd", "var", "samp", "sub", "sup", "del", "ins", "mark", "small", "big", "u", "s", "details", "summary", "figure", "figcaption", "main", "header", "footer", "nav", "section", "article", "aside", "form", "input", "label", "select", "button", "textarea", "script", "style", "meta", "link", "head", "body", "html", "title"]
+}
